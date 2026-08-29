@@ -1,0 +1,17 @@
+# Virtual environment
+.venv/
+
+# Python cache
+__pycache__/
+*.pyc
+
+# Generated analysis files
+analysis_results.json
+analysis_report.html
+
+# IDE files
+.vscode/
+.idea/
+
+# Environment variables
+.env
