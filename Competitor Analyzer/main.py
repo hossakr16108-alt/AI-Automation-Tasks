@@ -1,21 +1,16 @@
-from google import genai
+from openai import OpenAI
 import requests
 from bs4 import BeautifulSoup
 
+# Connect to Ollama
+OLLAMA_BASE_URL = "http://localhost:11434/v1"
 
-# =========================================================
-# 1. Gemini API Key and Client
-# =========================================================
+ollama = OpenAI(
+    base_url=OLLAMA_BASE_URL,
+    api_key="ollama"
+)
 
-my_key = "AQ.Ab8RN6J7KnAZ0AjffCQUsxtrmBS7L7wytntIGrDAPHyyTv2f4w"
-
-client = genai.Client(api_key=my_key)
-
-
-# =========================================================
-# 2. Website headers
-# =========================================================
-
+# Browser-like headers
 headers = {
     "User-Agent": (
         "Mozilla/5.0 (Windows NT 10.0; Win64; x64) "
@@ -26,133 +21,133 @@ headers = {
 }
 
 
-# =========================================================
-# 3. Function to fetch website contents
-# =========================================================
-
 def fetch_website_contents(url):
-
     response = requests.get(
         url,
         headers=headers,
         timeout=10
     )
 
-    # Check if the request was successful
     response.raise_for_status()
 
-    # Convert HTML into a BeautifulSoup object
     soup = BeautifulSoup(
         response.content,
         "html.parser"
     )
 
-    # Get website title
-    title = (
-        soup.title.string
-        if soup.title
-        else "No title"
-    )
+    # Get page title
+    if soup.title:
+        title = soup.title.get_text(strip=True)
+    else:
+        title = "No title"
 
-    # Remove unnecessary elements
+    # Get clean text
     if soup.body:
-
         for irrelevant in soup.body(
-            ["script", "style", "img", "input"]
+            ["script", "style", "img", "input", "noscript"]
         ):
             irrelevant.decompose()
 
-        # Extract text from the body
         text = soup.body.get_text(
             separator="\n",
             strip=True
         )
-
     else:
         text = ""
 
-    # Return title + website text
-    # Limit each website to 2000 characters
-    return (
-        title + "\n\n" + text
-    )[:2000]
+    # Limit the amount of text
+    return (title + "\n\n" + text)[:2000]
 
 
-# =========================================================
-# 4. URLs of the three websites
-# =========================================================
-
-url1 = "https://en.wikipedia.org/wiki/Fish"
-
-url2 = "https://en.wikipedia.org/wiki/Salmon"
-
-url3 = "https://en.wikipedia.org/wiki/Aquarium"
+# AI websites
+url1 = "https://en.wikipedia.org/wiki/Artificial_intelligence"
+url2 = "https://en.wikipedia.org/wiki/Machine_learning"
+url3 = "https://en.wikipedia.org/wiki/Deep_learning"
 
 
-# =========================================================
-# 5. Fetch data from the three websites
-# =========================================================
+print("Fetching AI website data...\n")
+
 
 data1 = fetch_website_contents(url1)
+print("✓ Artificial Intelligence website fetched")
 
 data2 = fetch_website_contents(url2)
+print("✓ Machine Learning website fetched")
 
 data3 = fetch_website_contents(url3)
+print("✓ Deep Learning website fetched")
 
 
-# =========================================================
-# 6. Combine all website data
-# =========================================================
-
+# Combine all website data
 all_data = f"""
---- FISH DATA ---
+--- ARTIFICIAL INTELLIGENCE DATA ---
 
 {data1}
 
 
---- SALMON DATA ---
+--- MACHINE LEARNING DATA ---
 
 {data2}
 
 
---- AQUARIUM DATA ---
+--- DEEP LEARNING DATA ---
 
 {data3}
 """
 
 
-# =========================================================
-# 7. Create the prompt for Gemini
-# =========================================================
-
+# Prompt for Qwen
 prompt = f"""
-Please analyze the following website data.
+You are an AI assistant specialized in analyzing AI-related website content.
+
+Analyze the following website data.
 
 Your tasks are:
 
-1. Summarize the main information from each website.
-2. Create a clear comparison table in Markdown.
-3. Compare the topics based only on the provided data.
-4. Make the answer clear and easy to understand.
+1. Summarize the main information about Artificial Intelligence.
+2. Summarize the main information about Machine Learning.
+3. Summarize the main information about Deep Learning.
+4. Create a clear comparison table in Markdown.
+5. Explain the relationship between AI, Machine Learning, and Deep Learning.
+6. Mention the important similarities and differences.
+7. Compare the three topics based ONLY on the provided data.
+8. Do not invent information that is not present in the provided data.
+9. Make the answer clear and easy to understand.
 
-The website data is:
+Website data:
 
 {all_data}
 """
 
 
-# =========================================================
-# 8. Send the data to Gemini
-# =========================================================
+print("\nSending data to Qwen...\n")
 
-response = client.models.generate_content(
-    model="gemini-3.6-flash",
-    contents=prompt
+
+# Send data to Qwen through Ollama
+response = ollama.chat.completions.create(
+    model="qwen-local:latest",
+    messages=[
+        {
+            "role": "system",
+            "content": (
+                "You are a helpful AI assistant "
+                "specialized in AI concepts and website analysis."
+            )
+        },
+        {
+            "role": "user",
+            "content": prompt
+        }
+    ]
 )
 
 
-# =========================================================
-# 9. Print Gemini's response
-# =========================================================
+# Display result
+print("\n")
+print("=" * 60)
+print("AI ANALYSIS")
+print("=" * 60)
 
-print(response.text)
+print(response.choices[0].message.content)
+
+print("=" * 60)
