@@ -1,0 +1,157 @@
+
+--- Page 1 ---
+Mennatullah Samir Mahmoud — Profile Knowledge
+Base
+ This document is a complete, structured reference about Mennatullah Samir Mahmoud, intended as
+context/knowledge-base source for a chatbot or RAG system answering questions on her behalf.
+Basic Info
+●
+Full name: Mennatullah Samir Mahmoud (also written "Menna Tullah Samir" / "Menna Allah Samir
+Mahmoud")
+●
+Location: Giza, 6th of October, Egypt
+●
+Phone: +20 1212391578
+●
+Email: mntallhmstfy668@gmail.com
+●
+LinkedIn: https://www.linkedin.com/in/menna-tullah-samir-121a1b2b7/
+●
+GitHub: https://github.com/mntallhmstfy668-sys
+●
+Languages: Arabic (Native), English (Good), French (Basic)
+●
+Current headline: Software Engineer | AI Enthusiast | Computer Science Student @ Benha University |
+STEM Graduate
+Summary / Bio
+Computer Science and Artificial Intelligence undergraduate at Benha University with a strong passion for
+Artificial Intelligence, AI automation, and intelligent systems. Graduated from Sharkya STEM School, where
+she built a foundation in analytical thinking and solving complex problems. Currently focused on building
+automated workflows, multi-API integrations, and deploying Retrieval-Augmented Generation (RAG)
+pipelines and LLM-based solutions using Python, n8n, and LangChain. Interested in bridging automation
+and intelligent systems to create efficient, real-world solutions. Open to freelance work, collaborations, and
+hands-on opportunities in AI and automation.
+Education
+●
+Bachelor of Science in Computers and Artificial Intelligence – Faculty of Computers and Artificial
+Intelligence, Benha University, Cairo, Egypt. July 2025 – July 2029 (currently enrolled)
+●
+STEM Graduate – Sharkya STEM School, Egypt. July 2022 – July 2025
+Technical Skills
+AI & Machine Learning: Natural Language Processing (NLP), Supervised Learning, Deep Learning,
+Scikit-learn, PyTorch, LLM Prompt Engineering, Text Classification, Data Cleaning & Vectorization
+Generative AI / LLM Tooling: LLM agents & tool-calling, Retrieval-Augmented Generation (RAG),
+LangChain, Ollama (local LLM inference), ChromaDB (vector store), sentence-transformers (embeddings)
+Automation & Integrations: n8n, API integrations, multi-API workflow automation
+App / Interface Frameworks: Streamlit, Gradio
+Mobile Development: Flutter, Dart
+Programming Languages: Python, C++, Dart
+
+--- Page 2 ---
+Dev Tools: Git, GitHub, VS Code, Google Colab
+Embedded & Hardware: Arduino
+Certifications
+ Certificate
+Issuer
+Date
+AI & Machine Learning Core Concepts and Practical Skills
+Neurova AI Bootcamp
+May 2026
+Introduction to C++ (Course Certificate)
+SoloLearn
+Dec 2025
+Robotics with Arduino (Certificate of Accomplishment)
+Robotix
+Aug 3, 2023
+Certificate of Completion - Ramadan Program (Flutter Track)
+TechTech
+-
+Digital Literacy Certification
+-
+-
+Training in progress (not yet certified)
+AI Automation Track, Digital Egypt Pioneers Initiative (DEPI) – Ministry of Communications and
+Information Technology (MCIT). Jul 2026 – Present. Intensive training in AI workflow automation (n8n), API
+integrations, and prompt engineering strategies. (Certificate not issued yet – do not present as completed.)
+Projects
+1. AI Research Assistant (RAG & Gradio)
+Lead AI Developer  Repo: https://github.com/mntallhmstfy668-sys/Ai_Research_Assistant-
+An autonomous research assistant. Given a research topic, the language model (Ollama, qwen2.5:7b)
+decides — via tool-calling — which of six tools to invoke and in what order: web search, page scraping,
+source summarization, source comparison, report generation, and querying a RAG memory store. Produces
+a structured report (Introduction, Key Findings, Conclusion, Sources) and supports grounded follow-up Q&A
+over the sources already collected.
+●
+Tech stack: Python, Ollama (qwen2.5:7b), Gradio, ChromaDB, sentence-transformers
+(all-MiniLM-L6-v2), LangChain's RecursiveCharacterTextSplitter, ddgs (DuckDuckGo search), requests +
+BeautifulSoup4
+●
+How it works: Chunking → embedding → storage in ChromaDB → semantic retrieval for follow-up
+questions → grounded generation (retrieved chunks injected into the prompt).
+●
+Reliability: input validation, per-tool error handling with graceful fallback, explicit message if the agent
+can't complete within its step limit.
+●
+Result / impact: Orchestrates 6 tools autonomously (search → scrape → summarize → compare →
+report) with zero hard-coded workflow logic — the model itself decides the sequence.
+2. CV & Job Description Matcher (AI Resume & Portfolio Job Matcher)
+Lead AI Developer  Repo: https://github.com/mntallhmstfy668-sys/Resume-Analyzer
+A two-pass local LLM pipeline (Ollama, Llama 3.1:8b) that ingests a candidate's resume (raw text, PDF,
+DOCX) or portfolio URL, extracts a structured JSON candidate profile (Pass 1), then compares that profile
+against a target job description to generate a match report with match score, strengths, and skill gaps (Pass
+2).
+
+--- Page 3 ---
+●
+Tech stack: Python, Streamlit, Ollama (Llama 3.1:8b) via OpenAI-compatible SDK, BeautifulSoup4,
+requests, python-docx
+●
+Runs 100% locally — full data privacy, no external API costs.
+●
+Result / impact: One run takes a raw resume (PDF, DOCX, or URL) all the way to a scored job-match
+report.
+3. AI-Powered STEM Student Chatbot Assistant
+Lead AI Developer  Repo: https://github.com/mntallhmstfy668-sys/GPT-4o-ChatBot-using-Streamlit
+A conversational assistant that explains STEM concepts in plain language, using structured LLM prompt
+engineering and dialogue-flow logic with reusable, curriculum-aligned prompt templates.
+●
+Tech stack: Python, Streamlit, GPT-4o, prompt engineering
+●
+Result / impact: Adapts each explanation live to the student's exact question instead of one fixed script
+for everyone.
+4. Fruits Classification System
+Computer Vision Developer  Repo: https://github.com/mntallhmstfy668-sys/fruit-classifier
+A supervised, multi-class image classification pipeline that categorizes a fruit image dataset: data
+preprocessing, feature extraction, model training, and evaluation with standard classification metrics.
+●
+Tech stack: Python, Scikit-learn, image processing
+●
+Result / impact: Full pipeline — raw image dataset → feature extraction → trained classifier →
+evaluated with standard metrics.
+5. Weather Station & Eco-Friendly Monitoring System
+STEM Project Developer
+An environmental monitoring system combining hardware sensors with C++ firmware logic; real-time
+routines collect and process temperature, humidity, and gas concentration data.
+●
+Tech stack: C++, Arduino, hardware sensors
+6. Hydroponics & Smart Irrigation Control System
+STEM Project Developer
+An automated smart-agriculture prototype using sensor feedback loops to monitor water and nutrient levels;
+embedded programming logic reduces resource waste and improves system responsiveness.
+●
+Tech stack: C++, Arduino, sensors, embedded programming
+Availability & What She's Looking For
+Open to freelance projects and collaborations in AI, automation, and software development — including
+AI agents/RAG systems, chatbots, workflow automation (n8n), and practical machine learning tools.
+Comfortable delivering either cloud-based or fully local/private solutions (no data leaving the client's
+machine, no ongoing API costs) depending on the client's needs. Also open to internships/entry-level roles
+and research collaborations.
+
+--- Page 4 ---
+Contact
+●
+Email: mntallhmstfy668@gmail.com
+●
+LinkedIn: https://www.linkedin.com/in/menna-tullah-samir-121a1b2b7/
+●
+GitHub: https://github.com/mntallhmstfy668-sys
